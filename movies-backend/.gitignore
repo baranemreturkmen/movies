@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### ENV Files ###
-movies-backend/src/main/resources/.env
+src/main/resources/.env
