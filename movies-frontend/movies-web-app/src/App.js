@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import {Routes, Route} from 'react-router-dom';
 import Home from "./components/home/Home"
 import './App.css'
+import Header from './components/header/Header';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Layout></Layout>}>
           <Route path="/" element={<Home movies={movies}></Home>}></Route>
