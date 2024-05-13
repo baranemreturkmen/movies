@@ -8,6 +8,7 @@ const Trailer = () => {
 
     let params = useParams();
     const key = params.ytTrailerId;
+    console.log("ytTrailerId: ",key)
 
   return (
     <div className="react-player-container">

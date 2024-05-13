@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import api from './api/axiosConfig'
 import {useState, useEffect} from 'react';
@@ -19,7 +18,7 @@ function App() {
   const getMovies = async () => {
     
     try{
-      const response = await api.get("/api/v1/movies");
+      const response = await api.get("/api/v1/movies"); //backend'de istek atmak istediğim adres, /api/v1/movies
       console.log(response.data);
       setMovies(response.data);
     }
@@ -34,17 +33,16 @@ function App() {
      
     try 
     {
-        const response = await api.get(`/api/v1/movies/${movieId}`);
+        const response = await api.get(`/api/v1/movies/${movieId}`); //backend'de ${movieId} -> /{imdbId}'ye karşılık geliyor.
 
         const singleMovie = response.data;
         console.log("App.js, SingleMovie Log: ",singleMovie)
         console.log("App.js, SingleMovie reviewIds Log: ",singleMovie.reviewIds)
         setMovie(singleMovie);
 
-        setReviews(singleMovie.reviewIds);
-        
-
-    } 
+        setReviews(singleMovie.reviewIds); 
+    }
+     
     catch (error) 
     {
       console.error(error);
@@ -54,7 +52,10 @@ function App() {
 
   useEffect(() => {
     getMovies();
-  },[])
+  },[]) //[] sadece ilk render anında useEffect'in çalışması için var. 2. parametre olarak [] olmazsa eğer bu useEffect sürekli çalışır!
+        //İhityacımız bu şekilde olduğu için şuan bu kullanım var. Başka bir sayfa da lk render anında değilde sürekli birşeylerin değişip değişmediğini takip etmek isteseydim.
+        //bu kullanım değişecekti. Mesela 2. [] olmasaydı eğer getMovies her çağrıldığında bu useEffect'de çalışacaktı. Backend'e attığım her istekte useEffect içerisinde 
+        //bişeyleri değiştirmek yada kontrol etmek isteseydim eğer 2. parametreyi kullanmazdım.
 
   return (
     <div className="App">
@@ -62,7 +63,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout></Layout>}>
           <Route path="/" element={<Home movies={movies}></Home>}></Route>
-          <Route path="/Trailer/:ytTrailerId" element={<Trailer></Trailer>}></Route>
+          <Route path="/Trailer/:ytTrailerId" element={<Trailer></Trailer>}></Route> 
+          {/* ytTrailerId, params.ytTrailerId ile Trailer sayfasında url'de ki unique id'yi alıyorum ve kullanıyorum. Tüm bu işi Rouete yapıyor.*/}
           <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews = {reviews} setReviews = {setReviews}></Reviews>}></Route>
         </Route>
       </Routes>
