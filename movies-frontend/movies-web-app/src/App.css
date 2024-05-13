@@ -1,20 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 *{
-  box-sizing: border-box;
+  /*box-sizing: border-box; Bir değişiklik olmadı.*/
   font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
-body{
+/*body{
   padding: 0%;
   margin: 0%;
-}
+}*/
+
+/*Bu yukarıda verdiğim 2 stil gelecekte eklenecek diğer sayfalar için düşünülmüş standart stiller olabilir.*/
 
 .App{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: black;
-  color: white;
-  margin-top: 10px;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  min-height: 100vh; /* .App sınıfının minimum yüksekliğini ekran yüksekliği kadar ayarlar.*/
+  background-color: black; /*Home sayfasını 2 ayrı parçaymış gibi düşün. Sadece alt tarafı değiştiriyor bu ayar.*/
+  color: white; /*Reviews sayfasındaki yazıları etkiliyor.*/
+  /*margin-top: 10px; Yukarıya 10 piksellik boşluk eklemek istemiyorum gerek yok.*/
 }
+
+/*Layout.js'de Outlet kullandığım için nested bu ayarlar. Yani sadece App.js/Ana sayfa etkinlenmiyor, diğer sayfalar da etkileniyor.*/
