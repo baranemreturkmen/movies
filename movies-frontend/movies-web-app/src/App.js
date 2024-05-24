@@ -59,12 +59,13 @@ function App() {
 
   return (
     <div className="App">
+      {/*Header'ın yeri önemli. Routes altında alırsam eğer route ettiğim sayfaların altında düşüyor, altında renderlanıyor!*/}
       <Header></Header>
       <Routes>
         <Route path="/" element={<Layout></Layout>}>
           <Route path="/" element={<Home movies={movies}></Home>}></Route>
-          <Route path="/Trailer/:ytTrailerId" element={<Trailer></Trailer>}></Route> 
           {/* ytTrailerId, params.ytTrailerId ile Trailer sayfasında url'de ki unique id'yi alıyorum ve kullanıyorum. Tüm bu işi Rouete yapıyor.*/}
+          <Route path="/Trailer/:ytTrailerId" element={<Trailer></Trailer>}></Route> 
           <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews = {reviews} setReviews = {setReviews}></Reviews>}></Route>
         </Route>
       </Routes>
