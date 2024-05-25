@@ -50,7 +50,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                     <>
                         <Row>
                             <Col>
-                                <ReviewForm handleSubmit={addReview} revText={revText} labelText = "Write a Review?" />  
+                                <ReviewForm handleSubmit={addReview} revText={revText} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?" />  
                             </Col>
                         </Row>
                         <Row>
