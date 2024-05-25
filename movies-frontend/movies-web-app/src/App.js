@@ -15,6 +15,7 @@ function App() {
   const [movie, setMovie] = useState();
   const [reviews, setReviews] = useState([]);
 
+  //Bu istek aslında ana sayfada (home) çıkan tüm filmler için.
   const getMovies = async () => {
     
     try{
@@ -29,6 +30,7 @@ function App() {
 
   }
 
+  //Ana sayfa dışındaki reviews sayfasına hazırlık.
   const getMovieData = async (movieId) => {
      
     try 

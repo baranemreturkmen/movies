@@ -21,6 +21,10 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<Review> createReview (@RequestBody Map<String, String> payload) {
+        /*
+        * payload.get içerisine koyduğum değerler ön yüzde gerçekten olan değerler
+        * const response = await api.post("/api/v1/reviews", {reviewBody: rev.value, imdbId: movieId});
+        * */
         return new ResponseEntity<>(reviewService.createReview(payload.get("reviewBody"), payload.get("imdbId")), HttpStatus.CREATED);
     }
 }
