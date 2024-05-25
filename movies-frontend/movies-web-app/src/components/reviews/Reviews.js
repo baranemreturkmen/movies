@@ -57,13 +57,12 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                 /*ReviewForm.js'de useState kullandığım için yeniden render ediliyor dolayısıyla artık burada 
                 temizleme işlemi gerçekleşmiyor!*/
                 //rev.value = "";
-                //revText.current.value = "";
-                //TODO: Fix that problem! 
                 console.log("rev1",rev)
                 console.log("rev2",rev.value)
                 console.log("rev3",revText.current.value)
                 //Yorumları günceller.
                 setReviews(updatedReviews);
+                revText.current.reset(); // Formu sıfırlayın
             }
 
             catch(err){
@@ -85,7 +84,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                     <>
                         <Row>
                             <Col>
-                                <ReviewForm handleSubmit={addReview} revText={revText} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?"/>  
+                                <ReviewForm handleSubmit={addReview} revText={revText} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?" ref={revText}/>  
                             </Col>
                         </Row>
                         <Row>

@@ -1,7 +1,7 @@
 import {Form, Button} from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle, forwardRef} from 'react';
 
-const ReviewForm = ({handleSubmit, revText, labelText, defaultValue}) => {
+const ReviewForm = forwardRef(({handleSubmit, revText, labelText, defaultValue}, ref) => {
   /*useState kullanarak value ve isFocused durumlarını tanımladık. 
     value metin alanının değerini tutarken, isFocused alanın odaklanma durumunu takip eder.*/
   const [value, setValue] = useState(defaultValue);
@@ -20,6 +20,13 @@ const ReviewForm = ({handleSubmit, revText, labelText, defaultValue}) => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      setValue(defaultValue);
+      setIsFocused(false);
+    }
+  }));
 
   return (
     <Form>
@@ -50,6 +57,6 @@ const ReviewForm = ({handleSubmit, revText, labelText, defaultValue}) => {
       <Button variant="outline-info" onClick={handleSubmit}>Submit</Button>
     </Form>
   )
-}
+});
 
 export default ReviewForm
