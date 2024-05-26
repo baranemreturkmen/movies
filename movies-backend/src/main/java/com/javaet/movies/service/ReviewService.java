@@ -16,6 +16,7 @@ public class ReviewService {
     @Autowired
     private MongoTemplate mongoTemplate;
     public Review createReview(String reviewBody, String imdbId) {
+        System.out.println("ReviewBody: "+reviewBody);
         Review review = reviewRepository.insert(new Review(reviewBody));
 
         mongoTemplate

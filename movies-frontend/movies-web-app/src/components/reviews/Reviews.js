@@ -15,6 +15,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
           Mevcut Değeri Alma: Formun mevcut değerini almak ve bu değeri kullanarak API'ye istek yapmak için kullanılır.
           Değeri Temizleme: Yorum gönderildikten sonra metin alanını temizlemek için kullanılır.*/
         const revText = useRef();
+        console.log("revTextInitialized: ",JSON.stringify(revText))
 
         /*URL parametrelerini alır. Hangi URL parametreleri? 
           App.js'de Route'a bak. 
@@ -43,7 +44,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
             /*Bu, formun varsayılan gönderim davranışını engeller ve formun sunucuya verileri göndermeden önce asenkron bir şekilde işlenmesini sağlar. 
               Bu şekilde, formun gönderilmesi sırasında sayfanın yenilenmesi engellenir ve kullanıcı formda kalır. 
               Formun varsayılan davranışını engeller.*/
-            //e.preventDefault(); //Kullanmayınca birşey değişmedi.
+            e.preventDefault(); //Kullanmayınca birşey değişmedi.
             
             //Yorum metin alanının mevcut değerini alır.
             const rev = revText.current;
@@ -52,14 +53,14 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                 const response = await api.post("/api/v1/reviews", {reviewBody: rev.value, imdbId: movieId});
                 console.log("reviews: ",reviews);
                 //Yeni yorumu mevcut yorumlara ekler.
+                console.log("Undefined4: ",JSON.stringify(revText))
+                console.log("Undefined5: ",JSON.stringify(revText.current))
+                console.log("Undefined6: ",JSON.stringify(revText.current.value))
                 const updatedReviews = [...reviews, {body: rev.value}];
                 //Yorum metin alanını temizler.
                 /*ReviewForm.js'de useState kullandığım için yeniden render ediliyor dolayısıyla artık burada 
                 temizleme işlemi gerçekleşmiyor!*/
                 //rev.value = "";
-                console.log("rev1",rev)
-                console.log("rev2",rev.value)
-                console.log("rev3",revText.current.value)
                 //Yorumları günceller.
                 setReviews(updatedReviews);
                 revText.current.reset(); // Formu sıfırlayın
@@ -84,7 +85,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                     <>
                         <Row>
                             <Col>
-                                <ReviewForm handleSubmit={addReview} revText={revText} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?" ref={revText}/>  
+                                <ReviewForm handleSubmit={addReview} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?" ref={revText}/>  
                             </Col>
                         </Row>
                         <Row>

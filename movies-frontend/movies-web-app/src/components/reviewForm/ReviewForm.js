@@ -1,7 +1,7 @@
 import {Form, Button} from 'react-bootstrap';
 import React, { useState, useImperativeHandle, forwardRef} from 'react';
 
-const ReviewForm = forwardRef(({handleSubmit, revText, labelText, defaultValue}, ref) => {
+const ReviewForm = forwardRef(({handleSubmit, labelText, defaultValue}, ref) => {
   /*useState kullanarak value ve isFocused durumlarını tanımladık. 
     value metin alanının değerini tutarken, isFocused alanın odaklanma durumunu takip eder.*/
   const [value, setValue] = useState(defaultValue);
@@ -12,19 +12,25 @@ const ReviewForm = forwardRef(({handleSubmit, revText, labelText, defaultValue},
     handleChange: Metin alanında bir değişiklik olduğunda tetiklenir ve value durumunu günceller.*/
   const handleFocus = () => {
     if (!isFocused) {
+      console.log("Undefined1: ",value," ","isFocused: ",isFocused)
       setValue('');
       setIsFocused(true);
     }
   };
 
   const handleChange = (e) => {
+    console.log("Undefined2: ",value," ","isFocused: ",isFocused)
+    console.log("Undefined2.1: ",e.target.value," ","isFocused: ",isFocused)
     setValue(e.target.value);
   };
 
   useImperativeHandle(ref, () => ({
     reset: () => {
+      ref.current.value = value;
+      console.log("Undefined3: ",value," ","isFocused: ",isFocused)
       setValue(defaultValue);
       setIsFocused(false);
+      //console.log("Undefined3.1: ",JSON.stringify(ref)," ","isFocused: ",isFocused)
     }
   }));
 
@@ -44,7 +50,6 @@ const ReviewForm = forwardRef(({handleSubmit, revText, labelText, defaultValue},
            className={isFocused ? 'text-dark' : 'text-muted'}: Odaklanma durumuna göre sınıf adı belirler. 
            Odaklanmışsa (isFocused true ise) text-dark, değilse text-muted sınıfı kullanılır.*/}
         <Form.Control 
-          ref={revText} 
           as ="textarea" 
           rows={3}
           value={value} 
