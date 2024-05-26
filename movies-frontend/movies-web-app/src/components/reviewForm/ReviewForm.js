@@ -1,41 +1,43 @@
 import {Form, Button} from 'react-bootstrap';
 import React, { useState, useImperativeHandle, forwardRef} from 'react';
 
-const ReviewForm = forwardRef(({handleSubmit, labelText, defaultValue}, ref) => {
+const ReviewForm = ({handleSubmit, labelText, defaultValue}) => {
   /*useState kullanarak value ve isFocused durumlarını tanımladık. 
     value metin alanının değerini tutarken, isFocused alanın odaklanma durumunu takip eder.*/
   const [value, setValue] = useState(defaultValue);
-  const [isFocused, setIsFocused] = useState(false);
+  //const [isFocused, setIsFocused] = useState(false);
 
   /*handleFocus: Metin alanına ilk kez odaklandığında tetiklenir. 
     Bu işlev, alanın değerini boş bir string yapar ve isFocused durumunu true olarak ayarlar.
     handleChange: Metin alanında bir değişiklik olduğunda tetiklenir ve value durumunu günceller.*/
-  const handleFocus = () => {
+  /*const handleFocus = () => {
     if (!isFocused) {
       console.log("Undefined1: ",value," ","isFocused: ",isFocused)
       setValue('');
       setIsFocused(true);
     }
+  };*/
+
+  const handleFocus = () => {
+    if (value === defaultValue) {
+      setValue('');
+    }
   };
 
   const handleChange = (e) => {
-    console.log("Undefined2: ",value," ","isFocused: ",isFocused)
-    console.log("Undefined2.1: ",e.target.value," ","isFocused: ",isFocused)
+    //console.log("Undefined2: ",value," ","isFocused: ",isFocused)
+    //console.log("Undefined2.1: ",e.target.value," ","isFocused: ",isFocused)
     setValue(e.target.value);
   };
 
-  useImperativeHandle(ref, () => ({
-    reset: () => {
-      ref.current.value = value;
-      console.log("Undefined3: ",value," ","isFocused: ",isFocused)
-      setValue(defaultValue);
-      setIsFocused(false);
-      //console.log("Undefined3.1: ",JSON.stringify(ref)," ","isFocused: ",isFocused)
-    }
-  }));
+  const onSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(value);
+    setValue(defaultValue);  // Form gönderildikten sonra değeri sıfırlıyoruz
+  };
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       {/*Form.Group: Bir form grubu oluşturur. Bu, formun belirli bir kısmını gruplayarak daha düzenli hale getirir.
          className="mb-3": Bootstrap sınıfı ile form grubunun altına marjin ekler (mb = margin-bottom).
          controlId="exampleForm.ControlTextarea1": Bu form kontrolüne bir ID atar, bu ID genellikle etiketle ilişkilendirilir.*/}
@@ -55,13 +57,13 @@ const ReviewForm = forwardRef(({handleSubmit, labelText, defaultValue}, ref) => 
           value={value} 
           onFocus={handleFocus}
           onChange={handleChange}
-          className={isFocused ? 'text-dark' : 'text-muted'}
+          className={value !== defaultValue ? 'text-dark' : 'text-muted'}
           ></Form.Control>
       </Form.Group>
       {/*Submit butonuna bastığımda Reviews.js sayfasında ki addReview metodu tetikleniyor.*/}
-      <Button variant="outline-info" onClick={handleSubmit}>Submit</Button>
+      <Button type="submit" variant="outline-info" onClick={handleSubmit}>Submit</Button>
     </Form>
   )
-});
+};
 
 export default ReviewForm
