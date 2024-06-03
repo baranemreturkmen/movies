@@ -57,7 +57,10 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                 //console.log("Undefined4: ",JSON.stringify(revText))
                 //console.log("Undefined5: ",JSON.stringify(revText.current))
                 //console.log("Undefined6: ",JSON.stringify(revText.current.value))
+
+                {/*updatedReviews adında yeni bir dizi oluşturur. Bu dizi, mevcut reviews dizisinin bir kopyasını ve son eklenen yorumu ({ body: reviewText }) içerir.*/}
                 const updatedReviews = [...reviews, {body: reviewText}];
+                console.log("updatedReviews:",updatedReviews)
                 //Yorum metin alanını temizler.
                 /*ReviewForm.js'de useState kullandığım için yeniden render ediliyor dolayısıyla artık burada 
                 temizleme işlemi gerçekleşmiyor!*/
@@ -73,23 +76,29 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
         }     
 
     return (
+        /*Container: React-Bootstrap'ten gelen bir bileşen. İçeriklerin düzgün bir şekilde hizalanması ve düzenlenmesi için kullanılır.*/
         <Container>
         <Row>
             <Col><h3>Reviews</h3></Col>
         </Row>
+        {/*Row className="mt-2": Bir satır oluşturur ve bu satıra "mt-2" (margin-top: 2) sınıfını ekler.*/}
         <Row className="mt-2">
             <Col>
+                {/*alt: Görüntünün alternatif metnini belirtir.*/}
                 <img src={movie?.poster} alt="" />
             </Col>
+            {/*İçeride React Fragment (<>...</>) kullanılmış, bu sayede gereksiz ek HTML elemanı olmadan birden fazla eleman gruplandırılabilir.*/}
             <Col>
                 {
                     <>
                         <Row>
+                            {/*labelText="Write a Review?": Formun etiket metni.*/}
                             <Col>
                                 <ReviewForm handleSubmit={addReview} labelText = "Write a Review?" defaultValue = "What are your thoughts about the movie?"/>  
                             </Col>
                         </Row>
                         <Row>
+                            {/*Bu kolon da bir yatay çizgi (<hr />) içerir.*/}
                             <Col>
                                 <hr />
                             </Col>
@@ -97,12 +106,16 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                     </>
                 }
                 {
+                    //İçeride reviews dizisi kontrol edilir. reviews?.map kullanılarak her bir yorum için bir döngü oluşturulur. Eğer reviews tanımlı değilse ?. operatörü sayesinde hata oluşmadan devam eder.
                     reviews?.map((r) => {
                         return(
+                            //Her review (r) için bir Row ve Col oluşturulur.
                             <>
+                            {/*Row: Yorumun (r.body) metnini gösterir.*/}
                                 <Row>
                                     <Col>{r.body}</Col>
                                 </Row>
+                                {/*İkinci Row: Bir Col içinde yatay çizgi (<hr />) içerir.*/}
                                 <Row>
                                     <Col>
                                         <hr />
@@ -114,6 +127,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
                 }
             </Col>
         </Row>
+        {/*Son Row: İçinde bir Col barındırır ve bu kolon da bir yatay çizgi (<hr />) içerir.*/}
         <Row>
             <Col>
                 <hr />

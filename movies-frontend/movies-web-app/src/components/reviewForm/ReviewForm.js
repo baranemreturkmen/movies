@@ -37,6 +37,7 @@ const ReviewForm = ({handleSubmit, labelText, defaultValue}) => {
   };
 
   return (
+    //Bir form dönüyorum Review.js'e ve bu formun içerisinde text area ve bir buton var!
     <Form onSubmit={onSubmit}>
       {/*Form.Group: Bir form grubu oluşturur. Bu, formun belirli bir kısmını gruplayarak daha düzenli hale getirir.
          className="mb-3": Bootstrap sınıfı ile form grubunun altına marjin ekler (mb = margin-bottom).
