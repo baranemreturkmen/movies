@@ -1,13 +1,32 @@
 body {
+  /*margin: 0;: body etiketinin etrafındaki varsayılan tüm boşlukları (margin) kaldırır. Bu, sayfanın kenarlarında boşluk olmamasını sağlar.*/
   margin: 0;
+  /*font-family: body etiketindeki metinlerin yazı tipini tanımlar. Birden fazla yazı tipi belirtilmiştir ve tarayıcı, cihazda mevcut olan ilk yazı tipini kullanır. Bu, yazı tipinin farklı platformlarda tutarlı görünmesini sağlar:
+  -apple-system: Apple cihazları için sistem yazı tipi.
+  BlinkMacSystemFont: Apple'ın Blink tarayıcı motoru için sistem yazı tipi.
+  'Segoe UI': Windows sistem yazı tipi.
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue': Popüler web ve mobil yazı tipleri.
+  sans-serif: Belirtilen yazı tiplerinden hiçbiri mevcut değilse sans-serif bir yazı tipi kullanılır.*/
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    /*-webkit-font-smoothing: Webkit tabanlı tarayıcılarda (Chrome, Safari) yazı tiplerinin nasıl düzgünleştirileceğini belirler.
+    antialiased: Yazı tiplerinin daha pürüzsüz ve keskin görünmesini sağlar.*/
   -webkit-font-smoothing: antialiased;
+  /*-moz-osx-font-smoothing: Mozilla tabanlı tarayıcılarda (Firefox) macOS'ta yazı tiplerinin nasıl düzgünleştirileceğini belirler.
+  grayscale: Yazı tiplerini gri tonlamalı olarak düzgünleştirir, bu da daha net görünmelerini sağlar.*/
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
+  /*font-family: code etiketindeki metinlerin yazı tipini tanımlar. Birden fazla yazı tipi belirtilmiştir ve tarayıcı, cihazda mevcut olan ilk yazı tipini kullanır. Bu yazı tipleri, genellikle kodu göstermek için kullanılan monospaced (her karakterin aynı genişlikte olduğu) yazı tipleridir:
+    source-code-pro: Adobe tarafından oluşturulan bir yazı tipi.
+    Menlo: macOS sistem yazı tipi.
+    Monaco: macOS ve eski sistemlerde kullanılan bir yazı tipi.
+    Consolas: Windows sistem yazı tipi.
+    'Courier New': Yaygın olarak kullanılan monospaced bir yazı tipi.
+    monospace: Belirtilen yazı tiplerinden hiçbiri mevcut değilse monospaced bir yazı tipi kullanılır.
+    css*/
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
