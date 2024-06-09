@@ -1,3 +1,7 @@
+/*90vh: Yükseklik değeri, viewport yüksekliğinin yüzde 90'ı olarak ayarlanır. 
+vh (viewport height) birimi, tarayıcı penceresinin (görüntüleme alanının) yüksekliğinin 
+yüzde birine eşittir. Dolayısıyla, 90vh değeri, öğenin yüksekliğinin tarayıcı penceresinin 
+yüksekliğinin yüzde 90'ı olmasını sağlar.*/
 .react-player-container{
     height: 90vh;
 }
