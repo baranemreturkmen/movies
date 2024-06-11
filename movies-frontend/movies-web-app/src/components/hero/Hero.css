@@ -1,21 +1,37 @@
-.movie-carousel-container{
+/*.movie-carousel-container{
     width: 100vw;
     background-color: black;
-}
+}*/
+/*  height: 300px;: Konteynerin yüksekliğini 300 piksel yapar.
+    border: 1px solid gold;: Konteynerin etrafına 1 piksel kalınlığında altın renginde bir çerçeve ekler.
+    border-radius: 10px;: Köşeleri 10 piksel yarıçapında yuvarlatır.
+    overflow: hidden;: Konteynerin içeriği taşarsa, taşan kısımları gizler.*/
 .movie-poster{
     height: 300px;
     border: 1px solid gold;
     border-radius: 10px;
     overflow: hidden;
 }
+/*.movie-poster > img: .movie-poster sınıfına sahip bir konteynerdeki img etiketini hedefler.
+    height: 100%;: Resmin yüksekliğini ebeveyn konteynerin (yani .movie-poster) yüksekliğiyle aynı yapar.
+    width: 100%;: Resmin genişliğini ebeveyn konteynerin genişliğiyle aynı yapar.*/
 .movie-poster > img{
     height: 100%;
     width: 100%;
 }
+/*height: 550px;: Konteynerin yüksekliğini 550 piksel yapar.
+background-color: black;: Konteynerin arka plan rengini siyah yapar.*/
 .movie-card-container{
     height: 550px;
     background-color: black;
 }
+/*background-repeat: no-repeat;: Arka plan görüntüsünün tekrar etmesini engeller.
+width: 100%;: Kartın genişliğini %100 yapar.
+height: 100%;: Kartın yüksekliğini %100 yapar.
+background-size: cover;: Arka plan görüntüsünü kapsayacak şekilde yeniden boyutlandırır.
+background-image: Arka plan görüntüsünü tanımlar.
+linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)): Üstten alta doğru şeffaflıktan opak siyaha bir geçiş (degrade) ekler.
+var(--img): CSS değişkeni --img ile belirtilen görüntüyü kullanır.*/
 .movie-card{
     background-repeat: no-repeat;
     width:100%;
@@ -23,6 +39,16 @@
     background-size: cover;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)), var(--img);
 }
+/*position: absolute;: Konteyneri konumlandırmak için mutlak pozisyonlama kullanır.
+top: 200px;: Konteyneri üstten 200 piksel aşağıda konumlandırır.
+display: flex;: Flexbox düzenini kullanır.
+justify-content: space-evenly;: Çocuk elemanları arasında eşit boşluk bırakır.
+width: 100%;: Konteynerin genişliğini %100 yapar.
+
+position: absolute;, bir HTML elemanının normal belge akışından çıkarılarak, 
+belirtilen konuma göre yerleştirilmesini sağlar. Bu, elemanın diğer elemanlarla 
+birlikte doğal olarak akış içinde yer almasını engeller ve onu belirli koordinatlara yerleştirir.
+*/
 .movie-detail{
     position: absolute;
     top:200px;
@@ -30,12 +56,30 @@
     justify-content: space-evenly;
     width:100%;
 }
+/*
+color: white;: Metin rengini beyaz yapar.
+display: flex;: Flexbox düzenini kullanır.
+align-items: center;: Çocuk elemanları dikey olarak ortalar. 
+(Gerçi Hero.js tarafında kendisinden başka child element yok. En içteki eleman bu.)
+(Yukarıda ki yorum yanlış. En içte html element <h4>{movie.title}</h4> var çünkü!)
+
+Flexbox, bir düzene (layout) odaklanan CSS3 modülüdür ve karmaşık düzenleri basit ve esnek bir şekilde oluşturmanıza olanak tanır.
+.movie-title öğesini bir flex konteyner yapar.
+Bu, .movie-title içindeki tüm doğrudan çocuk öğelerin flex item olacağı anlamına gelir.
+Flex konteyner, çocuk öğelerin yerleşimini ve hizalanmasını kontrol etmek için çeşitli özellikler sunar.
+Bunu align-items: center; ile birlikte yapıyor aslında. İkisi birlikte çalışıyor.
+*/
 .movie-title{
     color:white;
     display: flex;
     align-items: center;
 }
-
+/*
+display: flex;: Flexbox düzenini kullanır.
+justify-content: space-between;: Çocuk elemanları arasında boşluk bırakır.
+align-items: center;: Çocuk elemanları dikey olarak ortalar.
+width: 300px;: Konteynerin genişliğini 300 piksel yapar.
+*/
 .movie-buttons-container{
     display:flex;
     justify-content: space-between;
@@ -43,24 +87,44 @@
     width:300px;
 }
 
-.play-button-icon-container{
+/*.play-button-icon-container{
     padding:0px;
     margin:0px;
     width:150px;
-}
+}*/
+/*
+padding: 0px;: Butonun iç boşluklarını sıfırlar.
+margin: 0px;: Butonun dış boşluklarını sıfırlar.
+color: gold;: Butonun rengini altın yapar.
+font-size: 3rem;: Butonun yazı boyutunu 3 rem yapar.
+transition: 0.3s;: 0.3 saniyelik bir geçiş efekti ekler.
+cursor: pointer;: Fare işaretçisi butonun üzerine geldiğinde bir işaretçiye dönüşür.
+*/
 .play-button-icon{
-    padding:0px;
-    margin:0px;
+    /*padding:0px;
+    margin:0px;*/
     color:gold;
     font-size: 3rem;
     transition: 0.3s;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
+/*
+font-size: 4rem;: Butonun boyutunu 4 rem yapar.
+color: white;: Butonun rengini beyaz yapar.
+
+CSS'de :hover pseudo-class (sözde sınıf) bir elementin 
+üzerine fareyle gelindiğinde (hovered state) uygulanacak 
+stili belirler. Bu, kullanıcı etkileşimi sırasında görsel 
+geri bildirim sağlamak için yaygın olarak kullanılır.
+*/
 .play-button-icon:hover{
     font-size: 4rem;
     color:white;
 }
-
+/*Medya Sorgusu: Ekran genişliği 800 pikselden küçük olduğunda uygulanacak stiller.
+flex-direction: column;: Flexbox düzenini dikey (kolon) olarak değiştirir.
+align-items: center;: Çocuk elemanları yatay olarak ortalar.
+top: 20px;: Konteyneri üstten 20 piksel aşağıda konumlandırır.*/
 @media only screen and (max-width: 800px) {
     .movie-detail{
         flex-direction: column;

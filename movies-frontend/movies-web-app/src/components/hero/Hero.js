@@ -18,7 +18,8 @@ const Hero = ({movies}) => {
     }
 
   return (
-    <div className ='movie-carousel-container'>
+    //className ='movie-carousel-container'
+    <div>
         <Carousel>
             {
                 movies?.map((movie) => {
@@ -35,7 +36,8 @@ const Hero = ({movies}) => {
                                         </div>
                                         <div className='movie-buttons-container'>
                                             <Link to={`/Trailer/${movie.trailerLink.substring(movie.trailerLink.length -11)}`}>
-                                            <div className="play-button-icon-container">
+                                            {/*className="play-button-icon-container"*/}
+                                            <div>
                                                 <FontAwesomeIcon className="play-button-icon"
                                                         icon={faCirclePlay}
                                                 ></FontAwesomeIcon>
