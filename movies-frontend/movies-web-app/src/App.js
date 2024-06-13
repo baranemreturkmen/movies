@@ -31,6 +31,7 @@ function App() {
   }
 
   //Ana sayfa dışındaki reviews sayfasına hazırlık.
+  //Reviews sayfasına gidildiği zaman daha önceden girilmiş tüm review'lar bu sayede ön yüzde görünüyor.
   const getMovieData = async (movieId) => {
      
     try 
@@ -68,6 +69,10 @@ function App() {
           <Route path="/" element={<Home movies={movies}></Home>}></Route>
           {/* ytTrailerId, params.ytTrailerId ile Trailer sayfasında url'de ki unique id'yi alıyorum ve kullanıyorum. Tüm bu işi Rouete yapıyor.*/}
           <Route path="/Trailer/:ytTrailerId" element={<Trailer></Trailer>}></Route> 
+          {/*ÖNEMLİ:
+             getMovieData prop'una metod olan getMovieData direk geçildi çünkü Review.js sayfası içerinde bu metod kullanılıyor.
+             Review.js içerisinde useEffect kullanılıyor. Satfa ilk açılığında useEffect çalışıyor ve burada kullandığım getMovieData
+             metodunu çağırıyor bu metod içerisinde de zaten Review.js için hazırlık yapıyoruz.*/}
           <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews = {reviews} setReviews = {setReviews}></Reviews>}></Route>
         </Route>
       </Routes>
