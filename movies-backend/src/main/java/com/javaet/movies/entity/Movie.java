@@ -15,6 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Movie {
+    /*
+    * @Id Anotasyonu: Bu anotasyon, id alanının MongoDB'deki _id alanı ile eşleştirilmesini sağlar.
+      ObjectId Nesnesi: MongoDB, her belgeye benzersiz bir ObjectId oluşturur ve bu nesne oluşturulma zamanını içerir.
+      Ön Yüzde Görünen Bilgiler: Ön yüzde görünen date ve timestamp bilgileri, ObjectId nesnesinin oluşturulma zamanını yansıtır.
+      Yani bu değerler OnjectId nesnesinden geliyor.
+    * */
     @Id
     private ObjectId id;
     private String imdbId;
